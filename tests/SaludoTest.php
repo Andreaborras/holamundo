@@ -1,32 +1,44 @@
 <?php
+
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 
 class SaludoTest extends TestCase
 {
-     public function testEjemplo()
-    {
-        $this->assertTrue(true);
-    }
+    private array $saludos;
 
-    private $saludos;
-    public function __construct()
+    protected function setUp(): void
     {
+        parent::setUp();
+
         $this->saludos = [
-            "es" => ["saludo" => "¡Hola Mundo!", "codigo" => "ES"], // Español
-            "zh" => ["saludo" => "你好，世界！", "codigo" => "CN"], // Chino
-            "en" => ["saludo" => "Hello, World!", "codigo" => "US"], // Inglés
-            "hi" => ["saludo" => "नमस्ते दनुनया!", "codigo" => "IN"], // Hindi
-            "ar" => ["saludo" => "", "!بالعالم مرحباcodigo" => "AR"], // Árabe
-            "pt" => ["saludo" => "Olá Mundo!", "codigo" => "PT"], // Portugués
-            "ru" => ["saludo" => "Привет, мир!", "codigo" => "RU"], // Ruso
-            "ja" => ["saludo" => "こんにちは、世界！", "codigo" => "JP"], // Japonés
-            "de" => ["saludo" => "Hallo Welt!", "codigo" => "DE"], // Alemán
-            "fr" => ["saludo" => "Bonjour le monde!", "codigo" => "FR"], // Francés
+            "es" => ["saludo" => "¡Hola Mundo!", "codigo" => "ES"],
+            "zh" => ["saludo" => "你好，世界！", "codigo" => "CN"],
+            "en" => ["saludo" => "Hello, World!", "codigo" => "US"],
+            "hi" => ["saludo" => "नमस्ते दुनिया!", "codigo" => "IN"],
+            "ar" => ["saludo" => "مرحبا بالعالم!", "codigo" => "AR"],
+            "pt" => ["saludo" => "Olá Mundo!", "codigo" => "PT"],
+            "ru" => ["saludo" => "Привет, мир!", "codigo" => "RU"],
+            "ja" => ["saludo" => "こんにちは、世界！", "codigo" => "JP"],
+            "de" => ["saludo" => "Hallo Welt!", "codigo" => "DE"],
+            "fr" => ["saludo" => "Bonjour le monde!", "codigo" => "FR"],
         ];
     }
-    public function generarSaludoAleatorio()
+
+    public function testEjemplo(): void
+    {
+        $this->assertNotEmpty($this->saludos);
+    }
+
+    public function testGenerarSaludoAleatorio(): void
+    {
+        $saludo = $this->generarSaludoAleatorio();
+        $this->assertArrayHasKey('saludo', $saludo);
+        $this->assertArrayHasKey('codigo', $saludo);
+    }
+
+    private function generarSaludoAleatorio(): array
     {
         $indice = array_rand($this->saludos);
         return $this->saludos[$indice];
