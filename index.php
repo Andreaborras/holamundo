@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/./src/Saludo.php';
 
-use HolaMundoMultilenguaje\Saludo;
+use App\Saludo;
 
 $saludo = new Saludo();
 $mensaje = '';
