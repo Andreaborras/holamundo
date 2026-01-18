@@ -1,9 +1,15 @@
 <?php
+namespace Tests;
 
-namespace Test;
+use PHPUnit\Framework\TestCase;
 
-class Saludo
+class SaludoTest extends TestCase
 {
+     public function testEjemplo()
+    {
+        $this->assertTrue(true);
+    }
+
     private $saludos;
     public function __construct()
     {
